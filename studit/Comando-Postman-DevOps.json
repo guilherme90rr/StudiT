@@ -1,0 +1,417 @@
+{
+  "info": {
+    "_postman_id": "313223fd-dc47-4276-9f53-14c0f97c8199",
+    "name": "CP5-Devops",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23679644"
+  },
+  "item": [
+    {
+      "name": "Registrar Usuario",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nome\": \"Ozzy Osbourne\",\r\n    \"email\": \"ozzy@email.com\",\r\n    \"senha\": \"NoMoreTears\",\r\n    \"dataNascimento\": \"1948-12-03T00:00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/usuario",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "usuario"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login Usuario",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\" : \"emerson@email.com\",\r\n    \"senha\" : \"senha123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/usuario/login",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "usuario",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post Exercicio",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"pergunta\": \"Qual é o rio mais longo do mundo?\",\r\n  \"alternativas\": [\"Rio Amazonas\", \"Rio Yangtzé\", \"Rio Mississipi\", \"Rio Paraná\", \"Rio Nilo\"],\r\n  \"resposta\": \"4\",\r\n  \"resolucao\": \"O rio mais longo do mundo é o Rio Amazonas.\",\r\n  \"materiaEnum\": \"Geografia\",\r\n  \"usuario\": {\"id\": 1}\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/exercicio",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "exercicio"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Exercicio",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/exercicio",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "exercicio"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Exercicio by Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/exercicio/2",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "exercicio",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post Resumo",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"conteudo\": \"A Revolução Industrial foi um dos marcos mais significativos da história, transformando a sociedade e a economia de formas profundas. Explique as causas, consequências e principais inovações desse período.\",\r\n   \"dataCriacao\": \"2023-10-10T10:15:45\",\r\n   \"materiaEnum\": \"Sociologia\",\r\n   \"usuario\": {\"id\": 1}\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/resumo",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "resumo"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Resumos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/resumo",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "resumo"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Resumo by Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/resumo/2",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "resumo",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Atualizar Usuario",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nome\": \"Emerson Silva\",\r\n    \"email\": \"emerson@email.com\",\r\n    \"senha\": \"senha123\",\r\n    \"dataNascimento\": \"1996-11-08T18:30:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/usuario/1",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "usuario",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Usuario",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/usuario",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "usuario"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Usuario by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/usuario/1",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "usuario",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Atualizar Exercicio",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"pergunta\": \"Qual é o rio mais longo do mundo?\",\r\n  \"alternativas\": [\"Rio Amazonas\", \"Rio Yangtzé\", \"Rio Mississipi\", \"Rio Paraná\", \"Rio Nilo\"],\r\n  \"resposta\": \"0\",\r\n  \"resolucao\": \"O rio mais longo do mundo é o Rio Amazonas.\",\r\n  \"materiaEnum\": \"Geografia\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/exercicio/2",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "exercicio",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Atualizar Resumo",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"conteudo\": \"A Revolução Industrial foi um dos marcos mais significativos da história, transformando a sociedade e a economia de formas profundas. Explique as causas, consequências e principais inovações desse período.\",\r\n   \"dataCriacao\": \"2023-10-10T10:15:45\",\r\n   \"materiaEnum\": \"Historia\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/resumo/2",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "resumo",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Exercicio",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/exercicio/2",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "exercicio",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Resumo",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/resumo/2",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "resumo",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Usuario",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "app-studit-devops.azurewebsites.net/api/usuario/3",
+          "host": [
+            "app-studit-devops",
+            "azurewebsites",
+            "net"
+          ],
+          "path": [
+            "api",
+            "usuario",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

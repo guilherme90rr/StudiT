@@ -1,0 +1,79 @@
+-- Criação da tabela tb_studit_exercicio
+CREATE TABLE tb_studit_exercicio (
+    exercicio_id        BIGINT IDENTITY(29, 1) PRIMARY KEY,
+    exercicio_materia   INT NOT NULL,
+    exercicio_pergunta  NVARCHAR(255) NOT NULL,
+    exercicio_resolucao NVARCHAR(255) NOT NULL,
+    exercicio_resposta  NVARCHAR(255) NOT NULL,
+    usuario_id          BIGINT NOT NULL
+);
+
+-- Criação da tabela tb_studit_exercicio_alternativas
+CREATE TABLE tb_studit_exercicio_alternativas (
+    exercicio_id BIGINT NOT NULL,
+    alternativa  NVARCHAR(255) NOT NULL
+);
+
+-- Criação da tabela tb_studit_foto
+CREATE TABLE tb_studit_foto (
+    foto_id        BIGINT IDENTITY(26, 1) PRIMARY KEY,
+    foto_data      DATETIME2 NOT NULL,
+    foto_descricao NVARCHAR(255),
+    foto_tamanho   INT NOT NULL,
+    foto_url       NVARCHAR(255) NOT NULL,
+    usuario_id     BIGINT NOT NULL
+);
+
+-- Criação da tabela tb_studit_resumo
+CREATE TABLE tb_studit_resumo (
+    resumo_id       BIGINT IDENTITY(27, 1) PRIMARY KEY,
+    resumo_conteudo NVARCHAR(255) NOT NULL,
+    resumo_data     DATETIME2 NOT NULL,
+    resumo_materia  INT,
+    usuario_id      BIGINT NOT NULL
+);
+
+-- Criação da tabela tb_studit_usuario
+CREATE TABLE tb_studit_usuario (
+    usuario_id    BIGINT IDENTITY(25, 1) PRIMARY KEY,
+    usuario_data  DATETIME2,
+    usuario_email NVARCHAR(255) NOT NULL,
+    usuario_nome  NVARCHAR(255) NOT NULL,
+    usuario_senha NVARCHAR(255) NOT NULL
+);
+
+-- Criação das restrições de chave estrangeira
+ALTER TABLE tb_studit_exercicio
+    ADD CONSTRAINT fk_usuario_exercicio FOREIGN KEY (usuario_id)
+    REFERENCES tb_studit_usuario (usuario_id);
+
+ALTER TABLE tb_studit_foto
+    ADD CONSTRAINT fk_usuario_foto FOREIGN KEY (usuario_id)
+    REFERENCES tb_studit_usuario (usuario_id);
+
+ALTER TABLE tb_studit_exercicio_alternativas
+    ADD CONSTRAINT fk_exercicio_alternativas FOREIGN KEY (exercicio_id)
+    REFERENCES tb_studit_exercicio (exercicio_id);
+
+ALTER TABLE tb_studit_resumo
+    ADD CONSTRAINT fk_usuario_resumo FOREIGN KEY (usuario_id)
+    REFERENCES tb_studit_usuario (usuario_id);
+
+-- Criação do trigger para log de exercícios
+CREATE TRIGGER trg_log_exercicios
+ON tb_studit_exercicio
+AFTER INSERT
+AS
+BEGIN
+    INSERT INTO log_exercicios (
+        exercicio_id,
+        data_hora,
+        acao,
+        usuario_id
+    ) VALUES (
+        (SELECT TOP 1 exercicio_id FROM inserted),
+        GETDATE(),
+        'Inserção',
+        (SELECT TOP 1 usuario_id FROM inserted)
+    );
+END;
